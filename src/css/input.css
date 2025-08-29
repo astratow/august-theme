@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-accent: #ff6b35;
+  --page-width: 1200px;
+  --font-body-family: system-ui, -apple-system, sans-serif;
+  --font-heading-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    box-sizing: border-box;
+    height: 100%;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    font-family: var(--font-body-family);
+    line-height: 1.6;
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading-family);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary/90 focus:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-primary border-primary hover:bg-primary hover:text-white focus:ring-primary;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent text-white hover:bg-accent/90 focus:ring-accent;
+  }
+
+  .container-page {
+    @apply max-w-page mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+  }
+
+  .form-input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+}
+
+/* Utility Styles */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Shopify-specific styles */
+.shopify-section {
+  @apply w-full;
+}
+
+.shopify-section-header {
+  @apply mb-8;
+}
+
+.shopify-section-title {
+  @apply text-2xl font-bold text-primary mb-4;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .container-page {
+    @apply px-4;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container-page {
+    @apply px-6;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container-page {
+    @apply px-8;
+  }
+}
