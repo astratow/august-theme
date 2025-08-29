@@ -1,0 +1,50 @@
+<!-- sections/footer.liquid -->
+<footer>
+  {% if section.settings.show_social %}
+    <div class="footer-social">
+      {% render 'social-icons' %}
+    </div>
+  {% endif %}
+
+  {% if section.settings.menu != blank %}
+    <nav class="footer-nav">
+      {% for link in linklists[section.settings.menu].links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+  {% endif %}
+
+  {% if section.settings.show_payment_icons %}
+    <div class="footer-payments">
+      {% for type in shop.enabled_payment_types %}
+        {{ type | payment_type_svg_tag }}
+      {% endfor %}
+    </div>
+  {% endif %}
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show social icons",
+      "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "footer"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
